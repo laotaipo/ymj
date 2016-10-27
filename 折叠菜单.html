@@ -1,9 +1,8 @@
-    <!DOCTYPE html>
-    <html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
     <style>
         *{
             margin: 0;
@@ -15,8 +14,10 @@
         a{
             text-decoration: none;
         }
+        #menu{
+            width: 200px;
+        }
         #menu h3{
-            width: 100px;
             height: 40px;
             background: #000000;
             color: #fff;
@@ -28,24 +29,53 @@
             display: none;
         }
     </style>
-    <body>
-    <ul id="menu">
-        <li>
-            <h3>管理区</h3>
-            <ul class="sub-menu">
-                <li>01</li>
-                <li>02</li>
-                <li>03</li>
-            </ul>
-        </li>
-        <li>
-            <h3>执行区</h3>
-            <ul class="sub-menu">
-                <li>001</li>
-                <li>002</li>
-                <li>003</li>
-            </ul>
-        </li>
-    </ul>
-    </body>
-    </html>
+</head>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+        <h3>管理区</h3>
+        <ul class="sub-menu">
+            <li><a href="#">001</a></li>
+            <li><a href="#">002</a></li>
+            <li><a href="#">003</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <h3 onselectstart="return false;">交流区</h3>
+        <ul class="sub-menu">
+            <li><a href="#">001</a></li>
+            <li><a href="#">002</a></li>
+            <li><a href="#">003</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oMenu = document.getElementById("menu");
+    var aH3 = oMenu.getElementsByTagName("h3");
+    var aSubMenu = oMenu.getElementsByTagName("ul");
+    for(var i=0; i<aH3.length; i++){
+        aH3[i].index = i;//重点！！！给每个h3对象自定义属性index，用于保存住当时的i值
+        aH3[i].bFlag = false;//标志位，false表示当前是合上的,ture表示当前是打开的
+        aH3[i].onclick = function(){
+            if(this.bFlag){
+                aSubMenu[this.index].style.display = "none";
+            }else{
+                aSubMenu[this.index].style.display = "block";
+            }
+            this.bFlag = !this.bFlag;
+        };
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
