@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>But when we first met</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            color: blueviolet;
+            position: absolute;
+            top: 20px;
+            left: 480px;
+        }
+        #container{
+            position: relative;
+            height: 400px;
+            width: 500px;
+            background-color: blueviolet;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        #content{
+            width: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #scroll-bar{
+            width: 20px;
+            height: 400px;
+            background-color: salmon;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        #scroll-btn{
+            width: 20px;
+            height: 20px;
+            background: black;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<h1>你穿婚纱的样子真的美极了</h1>
+<div id = "container">
+
+    <div id = "content">
+        Not sure if you know this，<br>
+        不确定你是否清楚，<br>
+        But when we first met，<br>
+        当我第一次见到你，<br>
+        I got so nervous I couldn't speak，<br>
+        我紧张到话都说不清楚，<br>
+        In that very moment，<br>
+        在那一刻，<br>
+        I found the one and，<br>
+        我找到了我的唯一，<br>
+        my life had found this missing piece，<br>
+        终于弥补了我生命中的缺失，<br>
+        So as long as I live I love you，<br>
+        所以我会永远爱你，<br>
+        Will heaven hold you，<br>
+        会一直拥抱守护你，<br>
+        You look so beautiful in white，<br>
+        穿着白色婚纱的你如此美丽动人，<br>
+        And from now to my very last breath，<br>
+        直到我生命结束，<br>
+        This day I'll cherish，<br>
+        我都会铭记这一天，<br>
+        You look so beautiful in white Tonight，<br>
+        今晚穿着白色婚纱的你是如此美丽动人，<br>
+        What we have is timeless，<br>
+        我们拥有的是天长地久，<br>
+        My love is endless，<br>
+        我对你的爱是无穷无尽，<br>
+        And with this dream I Say to the world，<br>
+        我要把这个梦想告诉全世界，<br>
+        You're my every reason you're all，<br>
+        你是我全部的动力，<br>
+        that I believe in，<br>
+        你说的我全部相信，<br>
+        With all my heart I mean every word，<br>
+        每个字都由心而发，<br>
+        So as long as I live I love you，<br>
+        所以我会永远爱你，<br>
+        Will heaven and hold you，<br>
+        会一直拥抱守护你，<br>
+        You look so beautiful in white，<br>
+        穿着白色婚纱的你如此美丽动人，<br>
+        And from now to my very last breath，<br>
+        直到我生命结束，<br>
+        This day I'll cherish，<br>
+        我都会铭记这一天，<br>
+        You look so beautiful in white Tonight，<br>
+        今晚穿着白色婚纱的你是如此美丽动人，<br>
+        You look so beautiful in white，<br>
+        穿着白色婚纱的你如此美丽动人，<br>
+        so beautiful in white, Tonight.<br>
+        今晚穿着白色婚纱的你如此美丽动人，<br>
+        And if our daughter is what our future holds，<br>
+        如果我们以后生了一个女儿，<br>
+        I hope she has your eyes，<br>
+        我希望她也有你一般的眼睛，<br>
+        Finds love like you and I did，<br>
+        像你我一样遇到爱，<br>
+        Yeah, if she falls in love and we will let her go，<br>
+        当她坠入爱河我们就会放手，<br>
+        I'll walk her down the aisle，<br>
+        我会牵着她走过婚礼殿堂，<br>
+        She looks so beautiful in white，<br>
+        她穿着白色婚纱的样子一定也会很美，<br>
+        You look so beautiful in white，<br>
+        正如你一样，<br>
+        So as long as I live I love you，<br>
+        所以我会永远爱你，<br>
+        Will heaven hold you，<br>
+        会一直拥抱守护你，<br>
+        You look so beautiful in white，<br>
+        穿着白色婚纱的你如此美丽动人，<br>
+        And from now to my very last breath，<br>
+        直到我生命结束，<br>
+        This day I'll cherish，<br>
+        我都会铭记这一天，<br>
+        You look so beautiful in white Tonight，<br>
+        今晚穿着白色婚纱的你是如此美丽动人，<br>
+        You look so beautiful in white Tonight，<br>
+        今晚穿着白色婚纱的你是如此美丽动人。 <br>
+         
+    </div>
+    <div id="scroll-bar">
+        <span id="scroll-btn"></span>
+
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var oScrollBtn = document.getElementById('scroll-btn');
+    oScrollBtn.onmousedown = function(e){
+        e = e || window.event;
+//            iDisX = e.clientX;
+        iDisY = e.clientY - oContainer.offsetTop - oScrollBtn.offsetTop;
+        document.onmousemove = function(e){
+            e = e || window.event;
+            var iTop = e.clientY - oContainer.offsetTop - iDisY;
+            if(iTop <= 0 ){
+                iTop = 0;
+            }
+            if(iTop >= oContainer.offsetHeight - oScrollBtn.offsetHeight){
+                iTop = oContainer.offsetHeight - oScrollBtn.offsetHeight;
+            }
+            oScrollBtn.style.top = iTop + 'px';
+
+            var fScale =  iTop / (oContainer.offsetHeight - oScrollBtn.offsetHeight);
+
+            oContent.style.top = -(oContent.offsetHeight - oContainer.offsetHeight) * fScale + 'px';
+            return false;
+        };
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
+</script>
+</body>
+</html>
