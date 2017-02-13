@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    .main{
+        float: left;
+        width: 150px;
+
+        background-color: #aaaaaa;
+    }
+    .main-link{
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #000000;
+        text-indent: 20px;
+        background: url("images/down.gif") no-repeat 5px;
+    }
+    .main li a
+    {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        background:#888;
+    }
+    .main ul{
+    display: none}
+
+</style>
+<body>
+<div id="container">
+    <ul>
+        <li class="main">
+            <a href="#" class="main-link">菜单1</a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+            </ul>
+        </li>
+        <li class="main">
+            <a href="#" class="main-link">菜单2</a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+            </ul>
+        </li>
+        <li class="main">
+            <a href="#" class="main-link">菜单3</a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="../../jquery-1.12.4.js"></script>
+<script>
+    $('.main').hover(function(){
+        $(this).find('.main-link').css('background-images','url("images/up.gif")').end().children('ul').slideDown();
+    },function(){
+        $(this).find('.main-link').css('background-images','url("images/down.gif")').end().children('ul').slideUp();
+
+    });
+</script>
+</body>
+</html>
